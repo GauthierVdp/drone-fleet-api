@@ -17,15 +17,15 @@ Fleet.init({
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
-    location: {
+    description: {
         type: sequelize_1.DataTypes.STRING,
-        allowNull: true, // This is optional
+        allowNull: true,
     },
 }, {
     sequelize: database_1.default,
     modelName: 'Fleet',
-    tableName: 'fleet', // Ensure the table name matches the actual table name in MySQL
-    timestamps: true, // This will create createdAt and updatedAt fields automatically
+    tableName: 'fleet', // Ensure this matches your database table name
+    timestamps: true,
 });
 exports.default = Fleet;
 //# sourceMappingURL=fleet.js.map
