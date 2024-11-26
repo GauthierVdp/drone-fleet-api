@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Fleet from '../models/fleet';
+import Fleet from '../../data/models/fleet';
 
 export const getAllFleets = async (req: Request, res: Response) => {
   try {

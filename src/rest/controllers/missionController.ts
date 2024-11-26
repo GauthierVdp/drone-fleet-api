@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Mission from '../models/mission';
+import Mission from '../../data/models/mission';
 
 export const getAllMissions = async (req: Request, res: Response) => {
   try {
@@ -7,7 +7,7 @@ export const getAllMissions = async (req: Request, res: Response) => {
     if (!missions || missions.length === 0) {
       return res.status(404).json({ message: 'No missions found' });
     }
-    res.status(200).json(missions); // Send all missions as JSON
+    res.status(200).json(missions);
   } catch (error) {
     console.error('Error fetching missions:', error);
     res.status(500).json({ message: 'Failed to retrieve missions', error });

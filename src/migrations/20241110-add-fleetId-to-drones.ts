@@ -6,7 +6,7 @@ export default {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'fleets', // Refers to the `fleets` table
+        model: 'fleets',
         key: 'id',
       },
     });

@@ -24,7 +24,7 @@ module.exports = {
       droneId: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'drones',  // Foreign key referencing the drones table
+          model: 'drones', 
           key: 'id',
         },
         allowNull: false,

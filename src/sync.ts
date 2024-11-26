@@ -1,4 +1,4 @@
-import sequelize from './config/database'; // Adjust path if necessary
+import sequelize from './core/config/database';
 
 sequelize.sync({ force: false })
   .then(() => {

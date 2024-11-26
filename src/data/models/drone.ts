@@ -1,12 +1,12 @@
 import { Model, DataTypes } from 'sequelize';
-import sequelize from '../config/database';
+import sequelize from '../../core/config/database';
 
 class Drone extends Model {
   public id!: number;
   public name!: string;
   public type!: string;
   public status!: string;
-  public fleetId!: number;  // If fleetId is required
+  public fleetId!: number;
 }
 
 Drone.init(
@@ -29,14 +29,14 @@ Drone.init(
       allowNull: false,
     },
     fleetId: {
-      type: DataTypes.INTEGER,  // Add if necessary
-      allowNull: true,  // Adjust this based on whether fleetId is required
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
   },
   {
     sequelize,
     modelName: 'Drone',
-    tableName: 'drone',  // Ensure the table name matches your database table (singular)
+    tableName: 'drone',
     timestamps: true,
   }
 );

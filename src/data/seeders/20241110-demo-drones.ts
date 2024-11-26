@@ -1,4 +1,3 @@
-// src/seeders/20241111-demo-drones.ts
 import { QueryInterface } from 'sequelize';
 
 module.exports = {

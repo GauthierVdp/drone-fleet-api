@@ -2,7 +2,7 @@ import { QueryInterface, DataTypes } from 'sequelize';
 
 module.exports = {
   async up(queryInterface: QueryInterface) {
-    await queryInterface.createTable('drone', {  // Make sure this is 'drone' (singular)
+    await queryInterface.createTable('drone', { 
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -21,8 +21,8 @@ module.exports = {
         allowNull: false,
       },
       fleetId: {
-        type: DataTypes.INTEGER,  // If fleetId is included, define it
-        allowNull: true,  // Adjust if necessary
+        type: DataTypes.INTEGER,
+        allowNull: true, 
       },
       createdAt: {
         type: DataTypes.DATE,
@@ -38,6 +38,6 @@ module.exports = {
   },
 
   async down(queryInterface: QueryInterface) {
-    await queryInterface.dropTable('drone');  // Make sure this matches the table name (singular)
+    await queryInterface.dropTable('drone'); 
   },
 };

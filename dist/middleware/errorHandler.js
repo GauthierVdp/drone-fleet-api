@@ -1,8 +1,10 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const errorHandler = (err, req, res, next) => {
-    console.error(err);
-    res.status(500).json({ message: 'Internal Server Error', error: err.message });
+/*import { Request, Response, NextFunction } from 'express';
+
+const errorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
+  console.error(err);
+  res.status(500).json({ message: 'Internal Server Error', error: err.message });
 };
-exports.default = errorHandler;
+
+export default errorHandler;*/
 //# sourceMappingURL=errorHandler.js.map

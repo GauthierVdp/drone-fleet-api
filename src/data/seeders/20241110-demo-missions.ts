@@ -6,7 +6,7 @@ module.exports = {
       {
         name: 'Search and Rescue',
         description: 'Search and rescue operation in a mountainous area.',
-        fleetId: 1,  // Assuming the fleetId is 1, adjust as necessary
+        fleetId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -20,7 +20,7 @@ module.exports = {
       {
         name: 'Disaster Relief',
         description: 'Provide disaster relief by delivering medical supplies.',
-        fleetId: 2,  // Assuming fleetId 2 for another fleet
+        fleetId: 2,
         createdAt: new Date(),
         updatedAt: new Date(),
       },

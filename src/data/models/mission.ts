@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import sequelize from '../config/database';
+import sequelize from '../../core/config/database';
 
 class Mission extends Model {
   public id!: number;
@@ -8,8 +8,8 @@ class Mission extends Model {
   public status!: string;
   public startDate!: Date;
   public endDate!: Date;
-  public createdAt!: Date; // Optional if Sequelize manages this field automatically
-  public updatedAt!: Date; // Optional if Sequelize manages this field automatically
+  public createdAt!: Date; 
+  public updatedAt!: Date; 
 }
 
 Mission.init(
@@ -25,7 +25,7 @@ Mission.init(
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: false,  // Ensure that 'description' is not nullable
+      allowNull: false,  
     },
     status: {
       type: DataTypes.STRING,
@@ -43,8 +43,8 @@ Mission.init(
   {
     sequelize,
     modelName: 'Mission',
-    tableName: 'mission',  // Ensure this is the correct table name in the database
-    timestamps: true,  // Ensure Sequelize handles createdAt and updatedAt
+    tableName: 'mission', 
+    timestamps: true, 
   }
 );
 

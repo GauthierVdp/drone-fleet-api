@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import sequelize from '../config/database';
+import sequelize from '../../core/config/database';
 
 class Fleet extends Model {
   public id!: number;
@@ -26,7 +26,7 @@ Fleet.init(
   {
     sequelize,
     modelName: 'Fleet',
-    tableName: 'fleet',  // Ensure this matches your database table name
+    tableName: 'fleet', 
     timestamps: true,
   }
 );
