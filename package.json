@@ -1,0 +1,30 @@
+{
+  "name": "drone-fleet-api",
+  "version": "1.0.0",
+  "description": "API for Drone Fleet Management",
+  "main": "dist/index.js",
+  "packageManager": "yarn@4.5.1",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev src/index.ts",
+    "sequelize": "sequelize-cli --config ./src/config/database.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.4",
+    "mysql2": "^3.5.2",
+    "sequelize": "^6.37.5"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.12",
+    "@types/express": "^4.17.17",
+    "@types/node": "^22.9.0",
+    "@types/sequelize": "^4.28.20",
+    "rimraf": "^5.0.1",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2"
+  }
+}
