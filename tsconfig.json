@@ -11,6 +11,6 @@
     "skipLibCheck": true,
     "sourceMap": true
   },
-  "include": ["src", "../vuilbak/middleware", "prisma"],
+  "include": ["src", "prisma", "app.ts"],
   "exclude": ["node_modules"]
 }

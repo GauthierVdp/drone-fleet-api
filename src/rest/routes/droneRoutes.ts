@@ -1,12 +1,18 @@
-import { Router } from 'express';
-import * as droneController from '../controllers/droneController';
+import express from 'express';
+import {
+  getAllDrones,
+  getDroneById,
+  createDrone,
+  updateDrone,
+  deleteDrone,
+} from '../controllers/droneController';
 
-const router = Router();
+const router = express.Router();
 
-router.get('/', droneController.getAllDrones);
-router.get('/:id', droneController.getDroneById);
-router.post('/', droneController.createDrone);
-router.put('/:id', droneController.updateDrone);
-router.delete('/:id', droneController.deleteDrone);
+router.get('/', getAllDrones);
+router.get('/:id', getDroneById);
+router.post('/', createDrone);
+router.put('/:id', updateDrone);
+router.delete('/:id', deleteDrone);
 
 export default router;

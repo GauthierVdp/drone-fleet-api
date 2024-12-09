@@ -1,12 +1,18 @@
-import { Router } from 'express';
-import * as fleetController from '../controllers/fleetController';
+import express from 'express';
+import {
+  getAllFleets,
+  getFleetById,
+  createFleet,
+  updateFleet,
+  deleteFleet,
+} from '../controllers/fleetController';
 
-const router = Router();
+const router = express.Router();
 
-router.get('/', fleetController.getAllFleets);
-router.get('/:id', fleetController.getFleetById);
-router.post('/', fleetController.createFleet);
-router.put('/:id', fleetController.updateFleet);
-router.delete('/:id', fleetController.deleteFleet);
+router.get('/', getAllFleets);
+router.get('/:id', getFleetById);
+router.post('/', createFleet);
+router.put('/:id', updateFleet);
+router.delete('/:id', deleteFleet);
 
 export default router;

@@ -1,0 +1,9 @@
+require('ts-node/register');  // Add this line
+
+module.exports = {
+  config: "config/config.js",
+  "migrations-path": "src/data/migrations",
+  "seeders-path": "src/data/seeders",
+  "models-path": "src/data/models",
+  env: "development"
+};

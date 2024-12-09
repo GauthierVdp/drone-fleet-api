@@ -8,13 +8,9 @@ const mission_1 = __importDefault(require("../../data/models/mission"));
 const getAllMissions = async (req, res) => {
     try {
         const missions = await mission_1.default.findAll();
-        if (!missions || missions.length === 0) {
-            return res.status(404).json({ message: 'No missions found' });
-        }
-        res.status(200).json(missions); // Send all missions as JSON
+        res.status(200).json(missions);
     }
     catch (error) {
-        console.error('Error fetching missions:', error);
         res.status(500).json({ message: 'Failed to retrieve missions', error });
     }
 };
@@ -23,15 +19,14 @@ const getMissionById = async (req, res) => {
     const { id } = req.params;
     try {
         const mission = await mission_1.default.findByPk(id);
-        if (mission) {
-            res.status(200).json(mission);
-        }
-        else {
+        if (!mission) {
             res.status(404).json({ message: 'Mission not found' });
+            return;
         }
+        res.status(200).json(mission);
     }
     catch (error) {
-        res.status(500).json({ message: 'Error fetching mission', error });
+        res.status(500).json({ message: 'Failed to retrieve mission', error });
     }
 };
 exports.getMissionById = getMissionById;
@@ -41,7 +36,7 @@ const createMission = async (req, res) => {
         res.status(201).json(mission);
     }
     catch (error) {
-        res.status(500).json({ message: 'Error creating mission', error });
+        res.status(500).json({ message: 'Failed to create mission', error });
     }
 };
 exports.createMission = createMission;
@@ -49,16 +44,15 @@ const updateMission = async (req, res) => {
     const { id } = req.params;
     try {
         const mission = await mission_1.default.findByPk(id);
-        if (mission) {
-            await mission.update(req.body);
-            res.status(200).json(mission);
-        }
-        else {
+        if (!mission) {
             res.status(404).json({ message: 'Mission not found' });
+            return;
         }
+        await mission.update(req.body);
+        res.status(200).json(mission);
     }
     catch (error) {
-        res.status(500).json({ message: 'Error updating mission', error });
+        res.status(500).json({ message: 'Failed to update mission', error });
     }
 };
 exports.updateMission = updateMission;
@@ -66,16 +60,15 @@ const deleteMission = async (req, res) => {
     const { id } = req.params;
     try {
         const mission = await mission_1.default.findByPk(id);
-        if (mission) {
-            await mission.destroy();
-            res.status(204).json();
-        }
-        else {
+        if (!mission) {
             res.status(404).json({ message: 'Mission not found' });
+            return;
         }
+        await mission.destroy();
+        res.status(204).send();
     }
     catch (error) {
-        res.status(500).json({ message: 'Error deleting mission', error });
+        res.status(500).json({ message: 'Failed to delete mission', error });
     }
 };
 exports.deleteMission = deleteMission;

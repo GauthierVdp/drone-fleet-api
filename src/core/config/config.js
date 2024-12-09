@@ -8,5 +8,8 @@ module.exports = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     dialect: 'mysql',
+    logging: false // Disable logging or set it to a function for custom logging
   },
+  // other environments like production, test, etc.
 };
+
