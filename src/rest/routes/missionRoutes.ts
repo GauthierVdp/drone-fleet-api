@@ -1,12 +1,5 @@
 import express from 'express';
-import {
-  getAllMissions,
-  getMissionById,
-  createMission,
-  updateMission,
-  deleteMission,
-} from '../controllers/missionController';
-
+import { getAllMissions, getMissionById, createMission, updateMission, deleteMission } from '../controllers/missionController';
 const router = express.Router();
 
 router.get('/', getAllMissions);

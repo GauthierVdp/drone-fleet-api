@@ -21,4 +21,3 @@ class Fleet extends sequelize_1.Model {
     }
 }
 exports.default = Fleet;
-//# sourceMappingURL=fleet.js.map

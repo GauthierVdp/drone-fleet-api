@@ -33,4 +33,3 @@ class Drone extends sequelize_1.Model {
     }
 }
 exports.default = Drone;
-//# sourceMappingURL=drone.js.map

@@ -1,79 +1,53 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { PilotRepository } from '../../data/repositories/pilotRepository';
 
-const prisma = new PrismaClient();
+const pilotRepo = new PilotRepository();
 
 export const getAllPilots = async (req: Request, res: Response) => {
   try {
-    const pilots = await prisma.pilot.findMany();
+    const pilots = await pilotRepo.getAll();
     res.status(200).json(pilots);
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      res.status(500).json({ message: 'Error fetching pilots', error: error.message });
-    } else {
-      res.status(500).json({ message: 'An unknown error occurred' });
-    }
+  } catch (error: any) {
+    res.status(500).json({ message: 'Error fetching pilots', error: error.message });
   }
 };
 
 export const getPilotById = async (req: Request, res: Response) => {
   try {
-    const pilot = await prisma.pilot.findUnique({
-      where: { id: Number(req.params.id) },
-    });
-    if (!pilot) {
-      return res.status(404).json({ message: 'Pilot not found' });
-    }
-    res.status(200).json(pilot);
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      res.status(500).json({ message: 'Error fetching pilot', error: error.message });
+    const pilot = await pilotRepo.getById(Number(req.params.id));
+    if (pilot) {
+      res.status(200).json(pilot);
     } else {
-      res.status(500).json({ message: 'An unknown error occurred' });
+      res.status(404).json({ message: 'Pilot not found' });
     }
+  } catch (error: any) {
+    res.status(500).json({ message: 'Error fetching pilot', error: error.message });
   }
 };
 
 export const createPilot = async (req: Request, res: Response) => {
   try {
-    const pilot = await prisma.pilot.create({ data: req.body });
+    const pilot = await pilotRepo.create(req.body);
     res.status(201).json(pilot);
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      res.status(500).json({ message: 'Error creating pilot', error: error.message });
-    } else {
-      res.status(500).json({ message: 'An unknown error occurred' });
-    }
+  } catch (error: any) {
+    res.status(500).json({ message: 'Error creating pilot', error: error.message });
   }
 };
 
 export const updatePilot = async (req: Request, res: Response) => {
   try {
-    const pilot = await prisma.pilot.update({
-      where: { id: Number(req.params.id) },
-      data: req.body,
-    });
+    const pilot = await pilotRepo.update(Number(req.params.id), req.body);
     res.status(200).json(pilot);
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      res.status(500).json({ message: 'Error updating pilot', error: error.message });
-    } else {
-      res.status(500).json({ message: 'An unknown error occurred' });
-    }
+  } catch (error: any) {
+    res.status(500).json({ message: 'Error updating pilot', error: error.message });
   }
 };
 
 export const deletePilot = async (req: Request, res: Response) => {
   try {
-    await prisma.pilot.delete({
-      where: { id: Number(req.params.id) },
-    });
+    await pilotRepo.delete(Number(req.params.id));
     res.status(200).json({ message: 'Pilot deleted successfully' });
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      res.status(500).json({ message: 'Error deleting pilot', error: error.message });
-    } else {
-      res.status(500).json({ message: 'An unknown error occurred' });
-    }
+  } catch (error: any) {
+    res.status(500).json({ message: 'Error deleting pilot', error: error.message });
   }
 };

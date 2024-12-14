@@ -1,11 +1,5 @@
 import express from 'express';
-import {
-  getAllPilots,
-  getPilotById,
-  createPilot,
-  updatePilot,
-  deletePilot,
-} from '../controllers/pilotController';
+import { getAllPilots, getPilotById, createPilot, updatePilot, deletePilot } from '../controllers/pilotController';
 
 const router = express.Router();
 

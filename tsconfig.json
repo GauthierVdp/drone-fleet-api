@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "module": "commonjs",
-    "rootDir": "src",
-    "outDir": "dist",
-    "esModuleInterop": true,
+    "target": "ES6",
+    "module": "CommonJS",
     "strict": true,
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "sourceMap": true
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "types": ["node"]
   },
-  "include": ["src", "prisma", "app.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }

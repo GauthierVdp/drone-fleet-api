@@ -1,8 +1,9 @@
 const path = require('path');
+require('ts-node').register();
 
 module.exports = {
-  config: path.resolve('config', 'config.js'),
-  modelsPath: path.resolve('src', 'data', 'models'),
-  migrationsPath: path.resolve('src', 'data', 'migrations'),
-  seedersPath: path.resolve('src', 'data', 'seeders'),
+  'config': path.resolve('src/config/database.ts'),  // Adjusted to your TypeScript config
+  'models-path': path.resolve('src/models'),
+  'seeders-path': path.resolve('src/seeders'),
+  'migrations-path': path.resolve('src/migrations'),
 };

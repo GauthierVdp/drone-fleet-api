@@ -1,11 +1,5 @@
 import express from 'express';
-import {
-  getAllFleets,
-  getFleetById,
-  createFleet,
-  updateFleet,
-  deleteFleet,
-} from '../controllers/fleetController';
+import { getAllFleets, getFleetById, createFleet, updateFleet, deleteFleet } from '../controllers/fleetController';
 
 const router = express.Router();
 

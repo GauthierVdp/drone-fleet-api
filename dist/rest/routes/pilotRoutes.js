@@ -12,4 +12,3 @@ router.post('/', pilotController_1.createPilot);
 router.put('/:id', pilotController_1.updatePilot);
 router.delete('/:id', pilotController_1.deletePilot);
 exports.default = router;
-//# sourceMappingURL=pilotRoutes.js.map

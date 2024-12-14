@@ -28,4 +28,3 @@ class Mission extends sequelize_1.Model {
     }
 }
 exports.default = Mission;
-//# sourceMappingURL=mission.js.map

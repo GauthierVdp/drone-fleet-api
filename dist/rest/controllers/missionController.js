@@ -1,75 +1,69 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteMission = exports.updateMission = exports.createMission = exports.getMissionById = exports.getAllMissions = void 0;
-const mission_1 = __importDefault(require("../../data/models/mission"));
-const getAllMissions = async (req, res) => {
+const missionRepository_1 = require("../../data/repositories/missionRepository");
+const missionRepo = new missionRepository_1.MissionRepository();
+const getAllMissions = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const missions = await mission_1.default.findAll();
+        const missions = yield missionRepo.getAll();
         res.status(200).json(missions);
     }
     catch (error) {
-        res.status(500).json({ message: 'Failed to retrieve missions', error });
+        res.status(500).json({ message: 'Error fetching missions', error: error.message });
     }
-};
+});
 exports.getAllMissions = getAllMissions;
-const getMissionById = async (req, res) => {
-    const { id } = req.params;
+const getMissionById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const mission = await mission_1.default.findByPk(id);
-        if (!mission) {
-            res.status(404).json({ message: 'Mission not found' });
-            return;
+        const mission = yield missionRepo.getById(Number(req.params.id));
+        if (mission) {
+            res.status(200).json(mission);
         }
-        res.status(200).json(mission);
+        else {
+            res.status(404).json({ message: 'Mission not found' });
+        }
     }
     catch (error) {
-        res.status(500).json({ message: 'Failed to retrieve mission', error });
+        res.status(500).json({ message: 'Error fetching mission', error: error.message });
     }
-};
+});
 exports.getMissionById = getMissionById;
-const createMission = async (req, res) => {
+const createMission = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const mission = await mission_1.default.create(req.body);
+        const mission = yield missionRepo.create(req.body);
         res.status(201).json(mission);
     }
     catch (error) {
-        res.status(500).json({ message: 'Failed to create mission', error });
+        res.status(500).json({ message: 'Error creating mission', error: error.message });
     }
-};
+});
 exports.createMission = createMission;
-const updateMission = async (req, res) => {
-    const { id } = req.params;
+const updateMission = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const mission = await mission_1.default.findByPk(id);
-        if (!mission) {
-            res.status(404).json({ message: 'Mission not found' });
-            return;
-        }
-        await mission.update(req.body);
+        const mission = yield missionRepo.update(Number(req.params.id), req.body);
         res.status(200).json(mission);
     }
     catch (error) {
-        res.status(500).json({ message: 'Failed to update mission', error });
+        res.status(500).json({ message: 'Error updating mission', error: error.message });
     }
-};
+});
 exports.updateMission = updateMission;
-const deleteMission = async (req, res) => {
-    const { id } = req.params;
+const deleteMission = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const mission = await mission_1.default.findByPk(id);
-        if (!mission) {
-            res.status(404).json({ message: 'Mission not found' });
-            return;
-        }
-        await mission.destroy();
-        res.status(204).send();
+        yield missionRepo.delete(Number(req.params.id));
+        res.status(200).json({ message: 'Mission deleted successfully' });
     }
     catch (error) {
-        res.status(500).json({ message: 'Failed to delete mission', error });
+        res.status(500).json({ message: 'Error deleting mission', error: error.message });
     }
-};
+});
 exports.deleteMission = deleteMission;
-//# sourceMappingURL=missionController.js.map

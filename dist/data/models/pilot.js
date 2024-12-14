@@ -33,4 +33,3 @@ class Pilot extends sequelize_1.Model {
     }
 }
 exports.default = Pilot;
-//# sourceMappingURL=pilot.js.map

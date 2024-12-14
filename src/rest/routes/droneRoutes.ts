@@ -1,11 +1,5 @@
 import express from 'express';
-import {
-  getAllDrones,
-  getDroneById,
-  createDrone,
-  updateDrone,
-  deleteDrone,
-} from '../controllers/droneController';
+import { getAllDrones, getDroneById, createDrone, updateDrone, deleteDrone } from '../controllers/droneController';
 
 const router = express.Router();
 
